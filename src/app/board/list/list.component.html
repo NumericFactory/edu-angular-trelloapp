@@ -1,0 +1,26 @@
+<div cdkDropListGroup class="d-flex py-3">
+
+   <div class="list text-center py-3 " *ngFor="let list of lists; let i=index">
+
+      <!-- ACTION : EFFACER LA LISTE-->
+      <button class="list-btn" mat-flat-button (click)="delList(list.id)">Effacer la liste</button>
+      <!-- AFFICHER LA LISTE -->
+      <p class="listname">{{list.name}}</p>
+
+      <div cdkDropList (cdkDropListDropped)="drop($event, i)" [cdkDropListData]="list.cards">
+         <div class="my-1" cdkDrag *ngFor="let card of list.cards">
+            <app-card [card]="card"></app-card>
+         </div>
+      </div>
+
+      <!-- ACTION : AJOUTER UNE CARTE-->
+      <button class="card-btn" mat-flat-button (click)="addCard(list.id)">+ Ajouter une carte</button>
+
+   </div>
+
+   <!-- ACTION : AJOUTER UNE LISTE-->
+   <div class="list text-center">
+      <button class="list-btn" (click)="addList()" color="primary" mat-stroked-button>Ajouter une liste</button>
+   </div>
+
+</div>

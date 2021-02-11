@@ -1,0 +1,25 @@
+<h1>Connectez-vous</h1>
+
+<form (submit)="onLoginSubmit(loginForm)" #loginForm="ngForm">
+   <div class="mt-2">
+      <label class="form-label">Pseudo</label>
+      <input name="identifier" ngModel type="text" class="form-control">
+   </div>
+   <div class="mt-2">
+      <label class="form-label">Mot de passe</label>
+      <input name="password" ngModel type="password" class="form-control">
+   </div>
+   <div class="mt-3">
+      <button mat-flat-button color="primary">Envoyer</button>
+   </div>
+</form>
+
+<div class="alert alert-light">
+   <p>Utilisateur Test</p>
+   <ul>
+      <li><u>Login</u>: fred</li>
+      <li><u>Mdp</u>: Fred2021</li>
+   </ul>
+
+   <button mat-raised-button (click)="setForm(loginForm)">Pré-remplir le formulaire</button>
+</div>

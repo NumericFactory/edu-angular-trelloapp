@@ -1,0 +1,41 @@
+<!-- <nav class="navbar navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">TrelloLike</a>
+  </div>
+</nav> -->
+<mat-toolbar class="d-flex justify-content-between" color="primary">
+  <span>Trello Like</span>
+  <div>
+    <span *ngIf="!userService.isLogged()" class="me-2" [style.cursor]="'pointer'" routerLink="/login">Login</span>
+    <span *ngIf="userService.isLogged()" class="ms-2">Hello 😎</span>
+    <span *ngIf="userService.isLogged()" class="ms-2" [style.cursor]="'pointer'" (click)="logoutAction()">Logout</span>
+  </div>
+</mat-toolbar>
+
+<mat-progress-bar color="accent" [style.opacity]="(loaderService.isLoadingObs | async)?'1':'0'" mode="indeterminate">
+</mat-progress-bar>
+
+
+<div class="d-flex">
+
+  <!-- SIDEBAR-->
+  <div class="sidebar">
+    <ul class="list-group">
+
+      <a class="list-group-item list-group-item-action" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+        true}" href="">Home</a>
+
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+        true}" class="list-group-item list-group-item-action" href="">Board</a>
+
+      <a routerLink="/contacts" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+        true}" class="list-group-item list-group-item-action" href="">Contacts</a>
+    </ul>
+  </div>
+
+  <!-- CONTENU-->
+  <div class="interface container-fluid">
+    <!-- <app-board></app-board> -->
+    <router-outlet></router-outlet>
+  </div>
+</div>

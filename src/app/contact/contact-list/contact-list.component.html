@@ -1,0 +1,37 @@
+<div class="d-flex justify-content-between">
+   <div class="mr-4">
+      <input #input (keyup)="filterContacts(input.value)" type="text" placeholder="rechercher..." class="form-control">
+   </div>
+   <button routerLink="add" color="primary" mat-flat-button>Ajouter un contact</button>
+</div>
+
+<table class="table table-light table-hover mt-1">
+   <thead>
+      <tr>
+         <th>Prenom</th>
+         <th>Nom</th>
+         <th>Telephone</th>
+         <th>Email</th>
+         <th></th>
+         <th></th>
+      </tr>
+   </thead>
+   <tbody class="">
+      <tr *ngFor="let contact of contacts">
+         <td>{{contact.first | titlecase}}</td>
+         <td>{{contact.last | uppercase}}</td>
+         <td>{{contact.phone}}</td>
+         <td>{{contact.email}}</td>
+         <td [routerLink]="['update', contact.id]" class="updateContact">
+            <button title="Editer" color="primary" mat-icon-button>
+               <mat-icon aria-hidden="false" aria-label="Edit contact">edit</mat-icon>
+            </button>
+         </td>
+         <td (click)="deleteContactAction($event, contact.id)" class="deleteContact">
+            <button title="Supprimer" color="warn" mat-icon-button>
+               <mat-icon aria-hidden="false" aria-label="Delete contact">delete_outline</mat-icon>
+            </button>
+         </td>
+      </tr>
+   </tbody>
+</table>
